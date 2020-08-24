@@ -1,0 +1,39 @@
+# Read COLVAR file
+distance1:   READ FILE=COLVAR_use  IGNORE_TIME VALUES=d1
+distance2:   READ FILE=COLVAR_use  IGNORE_TIME VALUES=d2
+distance3:   READ FILE=COLVAR_use  IGNORE_TIME VALUES=d3
+distance4:   READ FILE=COLVAR_use  IGNORE_TIME VALUES=d4
+distance5:   READ FILE=COLVAR_use  IGNORE_TIME VALUES=d5
+distance6:   READ FILE=COLVAR_use  IGNORE_TIME VALUES=d6
+distance7:   READ FILE=COLVAR_use  IGNORE_TIME VALUES=d7
+distance9:   READ FILE=COLVAR_use  IGNORE_TIME VALUES=d9
+
+
+chi1:        READ FILE=COLVAR_use  IGNORE_TIME VALUES=chi1
+chi2:        READ FILE=COLVAR_use  IGNORE_TIME VALUES=chi2
+
+metad:       READ FILE=COLVAR_use IGNORE_TIME VALUES=metad.rbias
+uwall:       READ FILE=COLVAR_use IGNORE_TIME VALUES=uwall.bias
+lwall:       READ FILE=COLVAR_use IGNORE_TIME VALUES=lwall.bias
+
+# Define weights
+weights1: REWEIGHT_BIAS TEMP=300 ARG=metad.rbias
+weights2: REWEIGHT_BIAS TEMP=300 ARG=metad.rbias,uwall.bias,lwall.bias
+
+# Calculate histograms
+
+HISTOGRAM ...
+  ARG=chi1,chi2
+  GRID_MIN=-4,-4
+  GRID_MAX=4,4
+  GRID_BIN=200,200
+  BANDWIDTH=0.05,0.05
+  LOGWEIGHTS=weights2
+  LABEL=hh1
+... HISTOGRAM
+
+# Print histograms to file
+ff1: CONVERT_TO_FES GRID=hh1 TEMP=300
+DUMPGRID GRID=ff1 FILE=fes_chi.dat
+DUMPGRID GRID=hh1 FILE=histo_chi FMT=%24.16e
+
