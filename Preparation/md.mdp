@@ -1,0 +1,63 @@
+; Input file
+;
+define = 
+; integrator
+integrator = md 
+nsteps = 25000000000
+dt = 0.002
+;
+; removing CM translation and rotation
+comm_mode = Linear 
+nstcomm = 1000
+;
+; output control
+nstlog = 500
+nstenergy = 500
+nstxout = 50000
+nstvout = 50000
+nstfout = 0
+; group definition
+nstxtcout = 500
+xtc-grps = Protein Ion
+energy-grps = System
+;
+; neighbour searching
+nstlist = 20
+ns_type = grid
+pbc = xyz
+rlist = 1.2
+;
+; electrostatic
+cutoff-scheme = Verlet
+rcoulomb = 1.2
+coulombtype = pme
+fourierspacing = 0.16
+;
+; vdw
+vdw-type = Cut-off 
+rvdw = 1.2 
+;
+; constraints
+constraints = all-bonds 
+constraint-algorithm = lincs
+lincs_iter = 4
+;
+; temperature
+Tcoupl = v-rescale 
+tc_grps = system 
+tau_t = 0.1
+ref_t = 300.0
+;
+; pression
+;Pcoupl = no
+;Pcoupl = berendsen
+;Pcoupltype = isotropic
+;tau_p = 0.5
+;compressibility = 4.5e-5
+;ref_p = 1.0
+;refcoord_scaling = com 
+;
+; initial velocities
+gen_vel = yes 
+gen_temp = 300.0 
+gen_seed = -1
