@@ -8,4 +8,3 @@ This repo provides all details to repertory and validate the paper Flap dynamics
 5. COM TIP3P and TIP4P contains plumed.dat files to perform metadynamics simulations with centre of mass CVs (see full description in our paper).
 
 
-
