@@ -8,4 +8,4 @@ This repo provides all details to repertory and validate the paper Flap dynamics
 5. COM TIP3P and TIP4P contains plumed.dat files to perform metadynamics simulations with centre of mass CVs (see full description in our paper).
 
 Snapshots from clustering (using K-centers algorithm installed within Enspara) can be accessed here: https://drive.google.com/file/d/1hBR4G9GIb-JIyNrc9_eZIwx89Z8x4NIe/view?usp=sharing 
-The clustering was performed (using the build_msm.py script) on apo Plm-II using one of the MD trajectory with TIP3P water model. 
+The clustering was performed (using the build_msm.py script which can be accessed inside Clustering-script) on apo Plm-II using one of the MD trajectory with TIP3P water model. 
