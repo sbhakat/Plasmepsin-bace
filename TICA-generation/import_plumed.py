@@ -22,7 +22,7 @@ feat = DihedralFeaturizer(types=['chi1', 'chi2'])
 df1 = pd.DataFrame(feat.describe_features(top))
 #print(df1)
 
-output  = render_tica_plumed_file(tica_mdl= tica_model, df= df1, n_tics= 5, multiple_tics=None)
+output  = render_tica_plumed_file(tica_mdl= tica_model, df= df1, n_tics= 5, multiple_tics=None, vde_mdl=None)
 #Printing TIC1
 #print(output[0])
 #Printing TIC1
